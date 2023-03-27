@@ -18,9 +18,9 @@ SqlSession获取Executor实例的过程如下：
 
 ```
 DefaultSqlSessionFactory#openSessionFromDataSource()//开启会话
-Configuration.newExecutor()//创建执行器
-executor = new CachingExecutor(executor);////创建缓存类型的执行器，装饰器模式
-InterceptorChain.pluginAll();//为执行器设置拦截器链
+    Configuration.newExecutor()//创建执行器
+        executor = new CachingExecutor(executor);////创建缓存类型的执行器，装饰器模式
+            InterceptorChain.pluginAll();//为执行器设置拦截器链
 //当Executor执行的时候，就会触发拦截器，这其中包含我们编写的自定义拦截器
 ```
 
