@@ -28,7 +28,7 @@ SqlSession获取到的Executor实例实际上是个动态代理对象。
 
 接下来，我们就以SqlSession执行查询操作为例，介绍自定义插件执行拦截逻辑的过程。
 
-1.  SqlSession操作数据库依赖于Executor，SqlSession会调用SqlSessionFactory获取SqlSession过程中Configuration#newExecutor()方法创建的Executor代理对象
+1.  SqlSession操作数据库依赖于Executor，SqlSession会调用SqlSessionFactory#openSession()方法中Configuration#newExecutor()创建的Executor代理对象
 2.  SqlSession获取的是Executor组件的代理对象，执行查询操作时，会调用代理对象的query()方法
 3.  按照JDK动态代理机制，调用Executor代理对象的query()方法时，会调用Plugin类的invoke()方法
 4.  Plugin类的invoke()方法中会调用自定义拦截器对象的intercept()方法执行拦截逻辑
